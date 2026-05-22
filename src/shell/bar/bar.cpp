@@ -1105,6 +1105,21 @@ void Bar::hide() {
   applyIpcVisibility(false);
 }
 
+void Bar::toggle() {
+  const bool anyEffectivelyVisible = std::any_of(m_instances.begin(), m_instances.end(), [this](const auto& inst) {
+    return inst != nullptr && instanceEffectivelyVisible(*inst);
+  });
+
+  if (anyEffectivelyVisible) {
+    // Fade out only — do not block edge/pointer reveal (that is bar-hide's job).
+    applyIpcVisibility(false);
+    return;
+  }
+
+  m_ipcRevealBlocked = false;
+  applyIpcVisibility(true);
+}
+
 void Bar::syncInstances() {
   const auto& outputs = m_platform->outputs();
   const auto& bars = m_config->config().bars;
@@ -2317,11 +2332,7 @@ void Bar::registerIpc(IpcService& ipc) {
   ipc.registerHandler(
       "bar-toggle",
       [this](const std::string&) -> std::string {
-        if (m_ipcRevealBlocked) {
-          show();
-        } else {
-          hide();
-        }
+        toggle();
         return "ok\n";
       },
       "bar-toggle", "Toggle bar visibility (participates in auto-hide when enabled)");

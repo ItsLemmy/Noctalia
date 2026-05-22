@@ -58,6 +58,7 @@ public:
   void closeAllInstances();
   void show();
   void hide();
+  void toggle();
   [[nodiscard]] bool isVisible() const noexcept;
   void onOutputChange();
   void onSecondTick();
