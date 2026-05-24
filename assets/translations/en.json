@@ -936,21 +936,20 @@
       }
     },
     "options": {
-      "bar": {
-        "font-weight": {
-          "thin": "Thin",
-          "ultra-light": "Ultra Light",
-          "light": "Light",
-          "semi-light": "Semi Light",
-          "book": "Book",
-          "regular": "Regular",
-          "medium": "Medium",
-          "semi-bold": "Semi Bold",
-          "bold": "Bold",
-          "ultra-bold": "Ultra Bold",
-          "heavy": "Heavy",
-          "ultra-heavy": "Ultra Heavy"
-        }
+      "font-weight": {
+        "default": "Default",
+        "thin": "Thin",
+        "ultra-light": "Ultra Light",
+        "light": "Light",
+        "semi-light": "Semi Light",
+        "book": "Book",
+        "regular": "Regular",
+        "medium": "Medium",
+        "semi-bold": "Semi Bold",
+        "bold": "Bold",
+        "ultra-bold": "Ultra Bold",
+        "heavy": "Heavy",
+        "ultra-heavy": "Ultra Heavy"
       },
       "theme": {
         "mode": {
@@ -1179,6 +1178,10 @@
         "color": {
           "label": "Color",
           "description": "Color role for widget foreground; fixed hex colors are also supported"
+        },
+        "font_weight": {
+          "label": "Font Weight",
+          "description": "Font weight for this widget's labels"
         },
         "command": {
           "label": "Left Click Command",

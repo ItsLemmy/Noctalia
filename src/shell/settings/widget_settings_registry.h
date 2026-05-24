@@ -89,6 +89,7 @@ namespace settings {
     std::vector<WidgetSettingSelectOption> options;
     bool advanced = false;
     bool segmented = false;       // applies when valueType == Select
+    bool integerValue = false;    // applies when valueType == Select
     bool allowCustomColor = true; // applies when valueType == ColorSpec
     std::optional<WidgetSettingVisibility> visibleWhen;
   };

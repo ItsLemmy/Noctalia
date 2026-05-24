@@ -1,6 +1,8 @@
 #include "shell/settings/widget_settings_registry.h"
 
 #include "i18n/i18n.h"
+#include "render/core/renderer.h"
+#include "shell/settings/font_weight_i18n.h"
 #include "ui/style.h"
 
 #include <algorithm>
@@ -436,6 +438,16 @@ namespace settings {
 
     auto anchor = boolSpec("anchor", false, true);
     auto widgetColor = colorSpec("color", {}, true);
+    std::vector<WidgetSettingSelectOption> fontWeightOptions;
+    fontWeightOptions.reserve(kFontWeightOptions.size() + 1);
+    fontWeightOptions.push_back(WidgetSettingSelectOption{"", "settings.options.font-weight.default"});
+    for (const FontWeightI18nOption& option : kFontWeightOptions) {
+      fontWeightOptions.push_back(
+          WidgetSettingSelectOption{std::to_string(static_cast<int>(option.weight)), std::string(option.labelKey)}
+      );
+    }
+    auto fontWeight = selectSpec("font_weight", "", std::move(fontWeightOptions), true);
+    fontWeight.integerValue = true;
 
     auto capsuleToggle = boolSpec("capsule", false);
     auto capsuleGroup = stringSpec("capsule_group");
@@ -457,8 +469,9 @@ namespace settings {
     auto capsuleOpacity = doubleSpec("capsule_opacity", 1.0, 0.0, 1.0, 0.01);
     capsuleOpacity.visibleWhen = capsuleOn;
     return {
-        std::move(anchor),         std::move(widgetColor),    std::move(capsuleToggle), std::move(capsuleRadius),
-        std::move(capsuleGroup),   std::move(capsuleFill),    std::move(capsuleBorder), std::move(capsuleForeground),
+        std::move(anchor),         std::move(widgetColor),    std::move(fontWeight),
+        std::move(capsuleToggle),  std::move(capsuleRadius),  std::move(capsuleGroup),
+        std::move(capsuleFill),    std::move(capsuleBorder),  std::move(capsuleForeground),
         std::move(capsulePadding), std::move(capsuleOpacity),
     };
   }

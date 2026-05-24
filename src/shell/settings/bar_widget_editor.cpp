@@ -476,6 +476,9 @@ namespace settings {
           if (const auto* s = std::get_if<std::string>(&settingIt->second)) {
             return *s;
           }
+          if (const auto* i = std::get_if<std::int64_t>(&settingIt->second)) {
+            return std::to_string(*i);
+          }
           if (const auto* b = std::get_if<bool>(&settingIt->second)) {
             return *b ? "true" : "false";
           }
@@ -593,6 +596,9 @@ namespace settings {
     std::string settingValueAsString(const WidgetSettingValue& value) {
       if (const auto* v = std::get_if<std::string>(&value)) {
         return *v;
+      }
+      if (const auto* v = std::get_if<std::int64_t>(&value)) {
+        return std::to_string(*v);
       }
       return {};
     }
@@ -1118,6 +1124,10 @@ namespace settings {
             selectSetting = SelectSetting{std::move(options), selectedValue};
           }
           selectSetting.segmented = spec.segmented;
+          selectSetting.integerValue = spec.integerValue;
+          if (const auto* defaultString = std::get_if<std::string>(&spec.defaultValue); defaultString != nullptr) {
+            selectSetting.clearOnEmpty = defaultString->empty();
+          }
           ctx.makeRow(*panel, entry, ctx.makeSelect(std::move(selectSetting), path));
           break;
         }

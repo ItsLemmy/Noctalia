@@ -39,6 +39,19 @@ namespace {
   constexpr float kCircularCapsuleNarrowWidthEpsilon = 1.0f;
   constexpr std::int32_t kAutoHideTriggerPx = 3;
   constexpr float kAutoHideSlideExtraPx = 4.0f;
+
+  [[nodiscard]] FontWeight parseWidgetLabelFontWeight(const WidgetConfig& config, FontWeight fallback) {
+    const auto it = config.settings.find("font_weight");
+    if (it == config.settings.end()) {
+      return fallback;
+    }
+
+    if (const auto* raw = std::get_if<std::int64_t>(&it->second)) {
+      return static_cast<FontWeight>(*raw);
+    }
+    return fallback;
+  }
+
   [[nodiscard]] int barAutoHideEdgeGutter(const BarConfig& cfg) noexcept {
     if (!cfg.autoHide || cfg.marginEdge <= 0) {
       return 0;
@@ -1413,7 +1426,9 @@ void Bar::populateWidgets(BarInstance& instance) {
           widget->setAnchor(wcPtr->getBool("anchor", false));
         }
         widget->setBarCapsuleSpec(resolveWidgetBarCapsuleSpec(instance.barConfig, wcPtr));
-        widget->setLabelFontWeight(labelFontWeight);
+        widget->setLabelFontWeight(
+            wcPtr != nullptr ? parseWidgetLabelFontWeight(*wcPtr, labelFontWeight) : labelFontWeight
+        );
         if (wcPtr != nullptr && wcPtr->hasSetting("color")) {
           widget->setWidgetForeground(wcPtr->getOptionalColorSpec("color", "widget." + name + ".color"));
         } else if (instance.barConfig.widgetColor.has_value()) {

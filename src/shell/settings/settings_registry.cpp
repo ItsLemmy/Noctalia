@@ -3,8 +3,10 @@
 #include "core/process.h"
 #include "i18n/i18n.h"
 #include "render/core/color.h"
+#include "render/core/renderer.h"
 #include "shell/control_center/shortcut_registry.h"
 #include "shell/settings/color_spec_picker.h"
+#include "shell/settings/font_weight_i18n.h"
 #include "theme/builtin_palettes.h"
 #include "theme/builtin_templates.h"
 #include "util/string_utils.h"
@@ -1729,21 +1731,14 @@ namespace settings {
           ToggleSetting{bar.contactShadow}, "shadow contact panel attached"
       ));
       {
-        auto fontWeightSelect = plainSelect(
-            {{"100", "settings.options.bar.font-weight.thin"},
-             {"200", "settings.options.bar.font-weight.ultra-light"},
-             {"300", "settings.options.bar.font-weight.light"},
-             {"350", "settings.options.bar.font-weight.semi-light"},
-             {"380", "settings.options.bar.font-weight.book"},
-             {"400", "settings.options.bar.font-weight.regular"},
-             {"500", "settings.options.bar.font-weight.medium"},
-             {"600", "settings.options.bar.font-weight.semi-bold"},
-             {"700", "settings.options.bar.font-weight.bold"},
-             {"800", "settings.options.bar.font-weight.ultra-bold"},
-             {"900", "settings.options.bar.font-weight.heavy"},
-             {"1000", "settings.options.bar.font-weight.ultra-heavy"}},
-            std::to_string(bar.fontWeight)
-        );
+        std::vector<SelectOption> fontWeightOptions;
+        fontWeightOptions.reserve(kFontWeightOptions.size());
+        for (const FontWeightI18nOption& option : kFontWeightOptions) {
+          fontWeightOptions.push_back(
+              SelectOption{std::to_string(static_cast<int>(option.weight)), tr(option.labelKey)}
+          );
+        }
+        SelectSetting fontWeightSelect{std::move(fontWeightOptions), std::to_string(bar.fontWeight)};
         fontWeightSelect.integerValue = true;
         entries.push_back(makeEntry(
             section, "widgets", tr("settings.schema.bar.font-weight.label"),

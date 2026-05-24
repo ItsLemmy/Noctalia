@@ -355,3 +355,4 @@ battery_low_percent_threshold = 0   # set to e.g. 15 to enable battery_under_thr
 # [widget.clock]
 # format = "{:%H:%M}\n{:%d/%m}"
 # vertical_format = "{:%H\n%M}"
+# font_weight = 700
