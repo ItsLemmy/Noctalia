@@ -358,6 +358,139 @@ namespace ui {
     return control;
   }
 
+  std::unique_ptr<Select> select(SelectProps props) {
+    auto control = std::make_unique<Select>();
+    if (props.options.has_value()) {
+      control->setOptions(std::move(*props.options));
+    }
+    if (props.selectedIndex.has_value()) {
+      control->setSelectedIndex(*props.selectedIndex);
+    }
+    if (props.clearSelection.value_or(false)) {
+      control->clearSelection();
+    }
+    if (props.placeholder.has_value()) {
+      control->setPlaceholder(*props.placeholder);
+    }
+    if (props.fontSize.has_value()) {
+      control->setFontSize(*props.fontSize);
+    }
+    if (props.controlHeight.has_value()) {
+      control->setControlHeight(*props.controlHeight);
+    }
+    if (props.horizontalPadding.has_value()) {
+      control->setHorizontalPadding(*props.horizontalPadding);
+    }
+    if (props.glyphSize.has_value()) {
+      control->setGlyphSize(*props.glyphSize);
+    }
+    if (props.optionIndicators.has_value()) {
+      control->setOptionIndicators(std::move(*props.optionIndicators));
+    }
+    if (props.colorSwatchPreviews.has_value()) {
+      control->setColorSwatchPreviews(std::move(*props.colorSwatchPreviews));
+    }
+    if (props.enabled.has_value()) {
+      control->setEnabled(*props.enabled);
+    }
+    if (props.onSelectionChanged) {
+      control->setOnSelectionChanged(std::move(props.onSelectionChanged));
+    }
+    applyNodeProps(*control, props);
+    if (props.configure) {
+      props.configure(*control);
+    }
+    if (props.out != nullptr) {
+      *props.out = control.get();
+    }
+    return control;
+  }
+
+  std::unique_ptr<Slider> slider(SliderProps props) {
+    auto control = std::make_unique<Slider>();
+    if (props.minValue.has_value() || props.maxValue.has_value()) {
+      control->setRange(props.minValue.value_or(control->minValue()), props.maxValue.value_or(control->maxValue()));
+    }
+    if (props.step.has_value()) {
+      control->setStep(*props.step);
+    }
+    if (props.value.has_value()) {
+      control->setValue(*props.value);
+    }
+    if (props.enabled.has_value()) {
+      control->setEnabled(*props.enabled);
+    }
+    if (props.trackHeight.has_value()) {
+      control->setTrackHeight(*props.trackHeight);
+    }
+    if (props.thumbSize.has_value()) {
+      control->setThumbSize(*props.thumbSize);
+    }
+    if (props.controlHeight.has_value()) {
+      control->setControlHeight(*props.controlHeight);
+    }
+    if (props.wheelAdjustEnabled.has_value()) {
+      control->setWheelAdjustEnabled(*props.wheelAdjustEnabled);
+    }
+    if (props.onValueChanged) {
+      control->setOnValueChanged(std::move(props.onValueChanged));
+    }
+    if (props.onDragEnd) {
+      control->setOnDragEnd(std::move(props.onDragEnd));
+    }
+    applyNodeProps(*control, props);
+    if (props.configure) {
+      props.configure(*control);
+    }
+    if (props.out != nullptr) {
+      *props.out = control.get();
+    }
+    return control;
+  }
+
+  std::unique_ptr<Segmented> segmented(SegmentedProps props) {
+    auto control = std::make_unique<Segmented>();
+    if (props.fontSize.has_value()) {
+      control->setFontSize(*props.fontSize);
+    }
+    if (props.scale.has_value()) {
+      control->setScale(*props.scale);
+    }
+    if (props.compact.has_value()) {
+      control->setCompact(*props.compact);
+    }
+    if (props.enabled.has_value()) {
+      control->setEnabled(*props.enabled);
+    }
+    if (props.equalSegmentWidths.has_value()) {
+      control->setEqualSegmentWidths(*props.equalSegmentWidths);
+    }
+    if (props.options.has_value()) {
+      std::size_t index = 0;
+      for (const auto& option : *props.options) {
+        control->addOption(option.label, option.glyph);
+        if (!option.tooltip.empty()) {
+          control->setOptionTooltip(index, option.tooltip);
+        }
+        ++index;
+      }
+    }
+    if (props.selectedIndex.has_value()) {
+      control->setSelectedIndex(*props.selectedIndex);
+    }
+    if (props.onChange) {
+      control->setOnChange(std::move(props.onChange));
+    }
+    applyNodeProps(*control, props);
+    if (props.configure) {
+      props.configure(*control);
+    }
+    if (props.out != nullptr) {
+      *props.out = control.get();
+    }
+    return control;
+  }
+
   std::unique_ptr<ScrollView> scrollView(ScrollViewProps props) {
     auto control = std::make_unique<ScrollView>();
     if (props.state != nullptr) {

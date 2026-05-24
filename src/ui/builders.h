@@ -13,7 +13,10 @@
 #include "ui/controls/radio_button.h"
 #include "ui/controls/scroll_view.h"
 #include "ui/controls/search_picker.h"
+#include "ui/controls/segmented.h"
+#include "ui/controls/select.h"
 #include "ui/controls/separator.h"
+#include "ui/controls/slider.h"
 #include "ui/controls/spacer.h"
 #include "ui/controls/toggle.h"
 #include "ui/controls/virtual_grid_view.h"
@@ -25,6 +28,7 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include <string_view>
 #include <utility>
 #include <vector>
 
@@ -191,6 +195,73 @@ namespace ui {
     std::function<void(Separator&)> configure = nullptr;
   };
 
+  struct SelectProps {
+    Select** out = nullptr;
+    std::optional<std::vector<std::string>> options = std::nullopt;
+    std::optional<std::size_t> selectedIndex = std::nullopt;
+    std::optional<bool> clearSelection = std::nullopt;
+    std::optional<std::string> placeholder = std::nullopt;
+    std::optional<float> fontSize = std::nullopt;
+    std::optional<float> controlHeight = std::nullopt;
+    std::optional<float> horizontalPadding = std::nullopt;
+    std::optional<float> glyphSize = std::nullopt;
+    std::optional<std::vector<ColorSpec>> optionIndicators = std::nullopt;
+    std::optional<std::vector<ColorSwatchPreview>> colorSwatchPreviews = std::nullopt;
+    std::optional<bool> enabled = std::nullopt;
+    std::optional<float> width = std::nullopt;
+    std::optional<float> height = std::nullopt;
+    std::optional<float> flexGrow = std::nullopt;
+    std::optional<bool> visible = std::nullopt;
+    std::optional<bool> participatesInLayout = std::nullopt;
+    std::function<void(std::size_t, std::string_view)> onSelectionChanged = nullptr;
+    std::function<void(Select&)> configure = nullptr;
+  };
+
+  struct SliderProps {
+    Slider** out = nullptr;
+    std::optional<float> minValue = std::nullopt;
+    std::optional<float> maxValue = std::nullopt;
+    std::optional<float> step = std::nullopt;
+    std::optional<float> value = std::nullopt;
+    std::optional<bool> enabled = std::nullopt;
+    std::optional<float> trackHeight = std::nullopt;
+    std::optional<float> thumbSize = std::nullopt;
+    std::optional<float> controlHeight = std::nullopt;
+    std::optional<bool> wheelAdjustEnabled = std::nullopt;
+    std::optional<float> width = std::nullopt;
+    std::optional<float> height = std::nullopt;
+    std::optional<float> flexGrow = std::nullopt;
+    std::optional<bool> visible = std::nullopt;
+    std::optional<bool> participatesInLayout = std::nullopt;
+    std::function<void(float)> onValueChanged = nullptr;
+    std::function<void()> onDragEnd = nullptr;
+    std::function<void(Slider&)> configure = nullptr;
+  };
+
+  struct SegmentedOption {
+    std::string label = {};
+    std::string glyph = {};
+    std::string tooltip = {};
+  };
+
+  struct SegmentedProps {
+    Segmented** out = nullptr;
+    std::optional<std::vector<SegmentedOption>> options = std::nullopt;
+    std::optional<std::size_t> selectedIndex = std::nullopt;
+    std::optional<float> fontSize = std::nullopt;
+    std::optional<float> scale = std::nullopt;
+    std::optional<bool> compact = std::nullopt;
+    std::optional<bool> enabled = std::nullopt;
+    std::optional<bool> equalSegmentWidths = std::nullopt;
+    std::optional<float> width = std::nullopt;
+    std::optional<float> height = std::nullopt;
+    std::optional<float> flexGrow = std::nullopt;
+    std::optional<bool> visible = std::nullopt;
+    std::optional<bool> participatesInLayout = std::nullopt;
+    std::function<void(std::size_t)> onChange = nullptr;
+    std::function<void(Segmented&)> configure = nullptr;
+  };
+
   struct ScrollViewProps {
     ScrollView** out = nullptr;
     ScrollViewState* state = nullptr;
@@ -289,6 +360,9 @@ namespace ui {
   [[nodiscard]] std::unique_ptr<Glyph> glyph(GlyphProps props = {});
   [[nodiscard]] std::unique_ptr<Image> image(ImageProps props = {});
   [[nodiscard]] std::unique_ptr<Separator> separator(SeparatorProps props = {});
+  [[nodiscard]] std::unique_ptr<Select> select(SelectProps props);
+  [[nodiscard]] std::unique_ptr<Slider> slider(SliderProps props);
+  [[nodiscard]] std::unique_ptr<Segmented> segmented(SegmentedProps props);
   [[nodiscard]] std::unique_ptr<ScrollView> scrollView(ScrollViewProps props = {});
   [[nodiscard]] std::unique_ptr<VirtualGridView> virtualGridView(VirtualGridViewProps props);
   [[nodiscard]] std::unique_ptr<SearchPicker> searchPicker(SearchPickerProps props);
