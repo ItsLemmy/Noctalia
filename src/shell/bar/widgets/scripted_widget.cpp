@@ -20,6 +20,7 @@
 #include <cmath>
 #include <cstdint>
 #include <cstdlib>
+#include <fontconfig/fcfreetype.h>
 #include <fontconfig/fontconfig.h>
 #include <fstream>
 #include <iomanip>

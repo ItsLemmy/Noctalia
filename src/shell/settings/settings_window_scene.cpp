@@ -834,9 +834,11 @@ void SettingsWindow::buildScene(std::uint32_t width, std::uint32_t height) {
   const auto sections = sectionKeys(m_settingsRegistry);
   if (m_selectedSection == "bar" && selectedBar == nullptr) {
     m_selectedSection.clear();
-  } else if (m_selectedSection != "bar"
-             && !m_selectedSection.empty()
-             && std::find(sections.begin(), sections.end(), m_selectedSection) == sections.end()) {
+  } else if (
+      m_selectedSection != "bar"
+      && !m_selectedSection.empty()
+      && std::find(sections.begin(), sections.end(), m_selectedSection) == sections.end()
+  ) {
     m_selectedSection.clear();
   }
   if (m_selectedSection.empty()) {

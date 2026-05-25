@@ -1006,8 +1006,10 @@ namespace settings {
     std::string widgetType(widgetName);
     if (const auto withIt = withOverride.widgets.find(std::string(widgetName)); withIt != withOverride.widgets.end()) {
       widgetType = withIt->second.type;
-    } else if (const auto withoutIt = withoutOverride.widgets.find(std::string(widgetName));
-               withoutIt != withoutOverride.widgets.end()) {
+    } else if (
+        const auto withoutIt = withoutOverride.widgets.find(std::string(widgetName));
+        withoutIt != withoutOverride.widgets.end()
+    ) {
       widgetType = withoutIt->second.type;
     }
 
