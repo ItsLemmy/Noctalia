@@ -1415,7 +1415,7 @@ const WallpaperFavorite* ConfigService::wallpaperFavorite(std::string_view path)
   return nullptr;
 }
 
-void ConfigService::addWallpaperFavorite(std::string path) {
+void ConfigService::addWallpaperFavorite(std::string path, std::optional<WallpaperFavorite> preset) {
   if (m_overridesPath.empty()) {
     return;
   }
@@ -1426,7 +1426,7 @@ void ConfigService::addWallpaperFavorite(std::string path) {
   }
 
   std::erase_if(m_wallpaperFavorites, [&](const WallpaperFavorite& favorite) { return favorite.path == path; });
-  WallpaperFavorite favorite;
+  WallpaperFavorite favorite = preset.value_or(WallpaperFavorite{});
   favorite.path = std::move(path);
   m_wallpaperFavorites.push_back(std::move(favorite));
 

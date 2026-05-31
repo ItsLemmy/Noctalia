@@ -137,6 +137,17 @@ namespace {
         == FileUtils::normalizeWallpaperPath(currentWallpaperPath);
   }
 
+  [[nodiscard]] WallpaperFavorite wallpaperFavoriteFromTheme(const ThemeConfig& theme) {
+    WallpaperFavorite favorite;
+    favorite.themeMode = theme.mode;
+    favorite.paletteSource = theme.source;
+    favorite.builtinPalette = theme.builtinPalette;
+    favorite.communityPalette = theme.communityPalette;
+    favorite.customPalette = theme.customPalette;
+    favorite.wallpaperScheme = theme.wallpaperScheme;
+    return favorite;
+  }
+
 } // namespace
 
 class WallpaperGridAdapter : public VirtualGridAdapter {
@@ -1196,7 +1207,13 @@ void WallpaperPanel::toggleFavoriteForPath(const std::string& path) {
   if (m_config->isWallpaperFavorite(path)) {
     m_config->removeWallpaperFavorite(path);
   } else {
-    m_config->addWallpaperFavorite(path);
+    std::optional<WallpaperFavorite> preset;
+    const std::string currentPath = currentWallpaperPathForSelection();
+    if (!currentPath.empty()
+        && FileUtils::normalizeWallpaperPath(path) == FileUtils::normalizeWallpaperPath(currentPath)) {
+      preset = wallpaperFavoriteFromTheme(m_config->config().theme);
+    }
+    m_config->addWallpaperFavorite(path, preset);
   }
 
   if (m_viewMode == ViewMode::Favorites) {

@@ -71,7 +71,7 @@ public:
   [[nodiscard]] const std::vector<WallpaperFavorite>& wallpaperFavorites() const noexcept;
   [[nodiscard]] bool isWallpaperFavorite(std::string_view path) const;
   [[nodiscard]] const WallpaperFavorite* wallpaperFavorite(std::string_view path) const;
-  void addWallpaperFavorite(std::string path);
+  void addWallpaperFavorite(std::string path, std::optional<WallpaperFavorite> preset = std::nullopt);
   void removeWallpaperFavorite(std::string_view path);
   void setWallpaperFavoriteThemeMode(std::string_view path, ThemeMode themeMode);
   void setWallpaperFavoritePaletteSource(std::string_view path, std::optional<PaletteSource> source);
