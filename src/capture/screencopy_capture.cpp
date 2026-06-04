@@ -98,16 +98,10 @@ namespace {
       for (int x = 0; x < width; ++x) {
         if (bytesPerPixel == 3) {
           const auto* px = row + static_cast<std::size_t>(x) * 3U;
-          if (format == WL_SHM_FORMAT_RGB888) {
-            dst[0] = px[0];
-            dst[1] = px[1];
-            dst[2] = px[2];
-          } else {
-            // BGR888, or compositors that report 32-bit names with a 24-bit stride (seen on NVIDIA).
-            dst[0] = px[2];
-            dst[1] = px[1];
-            dst[2] = px[0];
-          }
+          // stride = width * 3: wire bytes are R, G, B even when the format enum says BGR888.
+          dst[0] = px[0];
+          dst[1] = px[1];
+          dst[2] = px[2];
           dst[3] = 255;
         } else {
           const auto* px = row + static_cast<std::size_t>(x) * 4U;
