@@ -1,6 +1,8 @@
 # Minimal reference plugin. Demonstrates the full bar-widget pipeline:
 # static manifest -> appears in the Add-widget picker -> renders/ticks ->
-# manifest-driven settings -> onIpc. See ../../../../noctalia-docs plugins guide.
+# manifest-driven settings -> onIpc.
+# See noctalia-docs plugins guide.
+
 id = "noctalia/example"
 name = "Example"
 version = "1.0.0"

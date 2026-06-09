@@ -5,9 +5,10 @@
 
 local count = 0
 
+-- Drive this service's own tick rate
+noctalia.setUpdateInterval(1000)
+
 function update()
-  -- Drive this service's own tick rate (runtime concern, not presentation).
-  noctalia.setUpdateInterval(1000)
   count = count + 1
   noctalia.state.set("tick", count)
 end
