@@ -336,14 +336,22 @@
         "horizontal": "Horizontal",
         "image-path": "Image",
         "inner-diameter": "Diamètre intérieur",
+        "input-opacity": "Opacité du champ de saisie",
+        "input-radius": "Arrondi du champ de saisie",
         "layout": "Disposition",
         "low-color": "Couleurs atténuées",
         "mirrored": "Miroir",
         "opacity": "Opacité",
         "primary-color": "Couleur principale",
+        "reset-defaults": "Réinitialiser les valeurs par défaut",
+        "ring-opacity": "Opacité de l’anneau",
+        "rotation-speed": "Vitesse de rotation",
         "secondary-color": "Couleur secondaire",
         "sensitivity": "Sensibilité",
         "shadow": "Ombre",
+        "show-label": "Afficher l’étiquette",
+        "show-login-button": "Bouton de connexion",
+        "show-when-idle": "Afficher si inactif",
         "stat": "Stat",
         "stat-cpu-temp": "Temp CPU",
         "stat-cpu-usage": "Util CPU",
@@ -360,12 +368,25 @@
         "vertical": "Vertical",
         "visualization-mode": "Mode",
         "visualization-mode-all": "Tout",
+        "visualization-mode-bars": "Barres",
+        "visualization-mode-bars-rings": "Barres + Anneaux",
+        "visualization-mode-rings": "Anneaux",
+        "visualization-mode-wave": "Onde",
+        "visualization-mode-wave-rings": "Onde + Anneaux",
+        "wave-thickness": "Épaisseur de l’onde",
         "widget-section": "Widget"
       },
+      "state": {
+        "grid-off": "Grille désactivée",
+        "grid-on": "Grille activée"
+      },
+      "title": "Widgets du bureau",
       "types": {
         "audio-visualizer": "Visualiseur audio",
         "clock": "Horloge",
+        "fancy-audio-visualizer": "Visualiseur audio stylisé",
         "label": "Label",
+        "media-player": "Lecteur multimédia",
         "sticker": "Sticker",
         "system-monitor": "Moniteur système",
         "weather": "Météo"
@@ -385,9 +406,195 @@
     "actions": {
       "close": "Fermer",
       "close-all": "Tout fermer"
+    },
+    "launcher": "Lanceur"
+  },
+  "internal-apps": {
+    "settings": {
+      "display-name": "Paramètres"
+    }
+  },
+  "launcher": {
+    "categories": {
+      "all": "Tout",
+      "applications": {
+        "development": "Développement",
+        "education": "Éducation",
+        "games": "Jeux",
+        "graphics": "Graphisme",
+        "internet": "Internet",
+        "multimedia": "Multimédia",
+        "office": "Bureautique",
+        "system": "Système",
+        "utilities": "Utilitaires"
+      },
+      "emoji": {
+        "activity": "Activité",
+        "animals": "Animaux",
+        "flags": "Drapeaux",
+        "food": "Nourriture",
+        "nature": "Nature",
+        "objects": "Objets",
+        "people": "Personnes",
+        "symbols": "Symboles",
+        "travel": "Voyage"
+      },
+      "recently-used": "Récemment utilisés"
+    },
+    "context-menu": {
+      "open": "Ouvrir",
+      "pin-to-dock": "Épingler au dock",
+      "unpin-from-dock": "Retirer du dock"
+    },
+    "empty": {
+      "no-results": "Aucun résultat",
+      "type-to-search": "Saisir pour rechercher…"
+    },
+    "providers": {
+      "applications": {
+        "title": "Applications"
+      },
+      "calculator": {
+        "title": "Calculette"
+      },
+      "emoji": {
+        "title": "Emoji"
+      },
+      "session": {
+        "action-subtitle": "Exécuter une action de session",
+        "command-subtitle": "Exécuter la commande configurée",
+        "title": "Sessions"
+      },
+      "wallpaper": {
+        "title": "Fond d'écran"
+      },
+      "window": {
+        "title": "Fenêtres"
+      }
+    },
+    "search-placeholder": "Rechercher des applications…"
+  },
+  "location": {
+    "errors": {
+      "address-lookup-failed": "Échec de la recherche d’adresse",
+      "ip-geolocation-failed": "Échec de la géolocalisation par IP",
+      "parse-geocode": "Impossible d’analyser la réponse de géocodage",
+      "parse-ip-geolocation": "Impossible d’analyser la réponse de géolocalisation IP"
+    },
+    "locations": {
+      "current": "Localisation actuelle"
+    },
+    "source": {
+      "address": "Adresse",
+      "auto": "Auto"
+    }
+  },
+  "lockscreen": {
+    "authenticating": "Authentification en cours…",
+    "authentication-failed": "Échec de l’authentification",
+    "password-cleared": "Mot de passe effacé",
+    "password-placeholder": "Mot de passe",
+    "ready": "Saisissez votre mot de passe et appuyez sur Entrée.",
+    "unlocked": "Déverrouillé",
+    "waiting": "En attente de confirmation de verrouillage…"
+  },
+  "notifications": {
+    "actions": {
+      "fallback": "Action",
+      "open": "Ouvrir"
+    },
+    "inline-reply": {
+      "button": "Répondre",
+      "placeholder": "Écrire une réponse"
+    },
+    "internal": {
+      "battery": "Batterie",
+      "battery-low-body": "{device} : {percent} % restant",
+      "battery-low-title": "Batterie faible",
+      "calendar": "Calendrier",
+      "calendar-google-connect-browser-failed": "Aucun navigateur n’a pu être lancé pour l’autorisation Google. Vérifiez le navigateur par défaut ou la configuration de xdg-open.",
+      "calendar-google-connect-expired": "L’autorisation Google a expiré avant la fin de la connexion. Relancez la procédure.",
+      "calendar-google-connect-failed-title": "Échec de la connexion à Google Agenda",
+      "calendar-google-connect-missing-account": "Aucun compte Google Agenda configuré ne correspond à \"{account}\".",
+      "calendar-google-connect-rate-limited": "L’autorisation Google est temporairement limitée. Veuillez réessayer plus tard.",
+      "calendar-google-connect-result-failed": "Impossible de finaliser l’autorisation Google. Relancez la procédure.",
+      "calendar-google-connect-start-failed": "Impossible de démarrer l’autorisation Google. Vérifiez votre connexion réseau et réessayez.",
+      "calendar-google-connect-start-http": "Impossible de démarrer l’autorisation Google. Le broker OAuth a renvoyé HTTP {status}.",
+      "calendar-google-connect-timeout": "Délai d’attente de l’autorisation Google dépassé. Relancez la connexion lorsque vous êtes prêt à vous connecter.",
+      "dbus-disabled": "Notifications DBus désactivées",
+      "desktop-widgets-editor": "Éditeur de widgets",
+      "desktop-widgets-editor-enabled": "L’éditeur de widgets de bureau est activé. Passez à un espace de travail vide pour afficher la superposition de l’éditeur.",
+      "greeter-sync": "Noctalia Greeter",
+      "greeter-sync-success": "Apparence synchronisée. Les modifications s’appliqueront au prochain écran de connexion.",
+      "keybind-app": "Noctalia",
+      "keybind-invalid-modifier": "Ce raccourci accepte une seule touche sans modificateur.",
+      "keybind-invalid-printable": "Les touches imprimables (lettres, chiffres, symboles) nécessitent un modificateur tel que Ctrl ou Alt.",
+      "keybind-invalid-super": "La touche Super/Windows ne peut pas être utilisée dans les raccourcis du shell.",
+      "keybind-invalid-title": "Raccourci non autorisé",
+      "lockscreen-widgets-editor": "Éditeur de widgets de l’écran de verrouillage",
+      "lockscreen-widgets-editor-blocked-locked": "Déverrouillez la session avant de modifier les widgets de l’écran de verrouillage.",
+      "lockscreen-widgets-editor-enabled": "L’éditeur de widgets de l’écran de verrouillage est activé. Disposez les widgets sur l'écran d'aperçu, puis verrouillez la session pour vérifier la disposition.",
+      "mpris-disabled": "MPRIS désactivé",
+      "session-bus-unavailable": "Bus de session indisponible",
+      "wallpaper-palette-export": "Palette personnalisée",
+      "wallpaper-palette-export-success": "\"{name}\" enregistré et palette basculée sur personnalisée."
+    }
+  },
+  "osd": {
+    "bluetooth": {
+      "off": "Bluetooth désactivé",
+      "on": "Bluetooth activé"
+    },
+    "caffeine": {
+      "off": "Caféine désactivée",
+      "on": "Caféine activée"
+    },
+    "dnd": {
+      "off": "NPD désactivé",
+      "on": "NPD activé"
+    },
+    "lock-keys": {
+      "caps-off": "Verr. maj. désactivé",
+      "caps-on": "Verr. maj. activé",
+      "num-off": "Verr. num. désactivé",
+      "num-on": "Verr. num. activé",
+      "scroll-off": "Arrêt défilement désactivé",
+      "scroll-on": "Arrêt défilement activé"
+    },
+    "wifi": {
+      "off": "Wi-Fi désactivé",
+      "on": "Wi-Fi activé"
+    }
+  },
+  "power": {
+    "battery": {
+      "states": {
+        "battery": "Batterie",
+        "charging": "En charge",
+        "discharging": "Décharge en cours",
+        "empty": "Vide",
+        "plugged-in": "Branché"
+      },
+      "tooltip": {
+        "health": "Santé",
+        "rate": "Taux",
+        "status": "Status",
+        "time-left": "Temps restant",
+        "time-to-full": "Temps avant charge complète"
+      }
+    },
+    "profiles": {
+      "balanced": "Équilibré",
+      "performance": "Performance",
+      "power-saver": "Economie d’énergie"
     }
   },
   "settings": {
+    "calendar-accounts": {
+      "add-title": "Ajouter un compte au calendrier",
+      "color-label": "Couleur",
+      "id-label": "iD du compte"
+    },
     "schema": {
       "appearance": {
         "app-icon-colorize": {

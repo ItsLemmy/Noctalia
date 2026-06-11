@@ -1056,6 +1056,7 @@
     "plugins": {
       "plugins": {
         "configure": "Configureren",
+        "deprecated": "verouderd",
         "empty": "Er zijn geen plugins gevonden. Voeg een bron toe of controleer je netwerk.",
         "loading": "Plugins laden...",
         "refreshing": "Plugins herladen...",

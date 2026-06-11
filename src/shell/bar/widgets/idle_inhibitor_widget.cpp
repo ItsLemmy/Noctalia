@@ -76,7 +76,7 @@ void IdleInhibitorWidget::syncState(Renderer& renderer) {
   } else if (enabled) {
     m_glyph->setColor(widgetIconColorOr(colorSpecFromRole(ColorRole::Primary)));
   } else {
-    m_glyph->setColor(widgetForegroundOr(colorSpecFromRole(ColorRole::OnSurface)));
+    m_glyph->setColor(widgetIconColorOr(colorSpecFromRole(ColorRole::OnSurface)));
   }
   m_glyph->measure(renderer);
   m_area->setEnabled(available);

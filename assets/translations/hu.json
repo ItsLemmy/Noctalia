@@ -512,7 +512,7 @@
       "battery-low-title": "Alacsony akkumulátorszint",
       "calendar": "Naptár",
       "calendar-google-connect-browser-failed": "Nem sikerült böngészőt indítani a Google-hitelesítéshez. Ellenőrizd az alapértelmezett böngészőt vagy az xdg-open beállításait.",
-      "calendar-google-connect-expired": "A Google engedélyezés lejárt, mielőtt a bejelentkezés befejeződött volna. Kezdd újra a kapcsolatot.",
+      "calendar-google-connect-expired": "A Google-hitelesítés lejárt, mielőtt a bejelentkezés befejeződött volna. Kezdd újra a kapcsolódást.",
       "calendar-google-connect-failed-title": "Google Calendar kapcsolat meghiúsult",
       "calendar-google-connect-missing-account": "Nincs konfigurált Google naptárfiók, ami egyezne ezzel: „{account}”.",
       "calendar-google-connect-rate-limited": "A Google hitelesítés átmenetileg korlátozva van. Várj egy kicsit, majd próbáld újra.",

@@ -1292,11 +1292,11 @@
           "label": "Widget Capsules"
         },
         "widget-color": {
-          "description": "Default label color role for widgets on this bar; fixed hex colors are also supported",
+          "description": "Default icon and label color role for widgets on this bar; fixed hex colors are also supported",
           "label": "Widget Color"
         },
         "widget-icon-color": {
-          "description": "Default icon color role for widgets on this bar; fixed hex colors are also supported",
+          "description": "Overrides the widget color for icons on this bar; fixed hex colors are also supported",
           "label": "Widget Icon Color"
         },
         "widget-spacing": {
@@ -1548,10 +1548,6 @@
         }
       },
       "lockscreen": {
-        "enabled": {
-          "description": "Enable session lock, logind integration, and lock actions",
-          "label": "Lock Screen"
-        },
         "blur-intensity": {
           "description": "How much the lock screen background is blurred",
           "label": "Blur Intensity"
@@ -1559,6 +1555,10 @@
         "blurred-desktop": {
           "description": "Use a snapshot of the desktop as the lock screen background",
           "label": "Desktop Capture"
+        },
+        "enabled": {
+          "description": "Enable session lock, logind integration, and lock actions",
+          "label": "Lock Screen"
         },
         "monitors": {
           "description": "Choose which monitors show the lock screen; leave empty to show on all monitors",
@@ -2343,12 +2343,8 @@
           "label": "Centered"
         },
         "color": {
-          "description": "Color role for widget text; fixed hex colors are also supported",
-          "label": "Text Color"
-        },
-        "icon-color": {
-          "description": "Color role for widget icons; fixed hex colors are also supported",
-          "label": "Icon Color"
+          "description": "Color role for this widget's icon and label; fixed hex colors are also supported",
+          "label": "Color"
         },
         "command": {
           "description": "Shell command run when left-clicking this button",
@@ -2360,7 +2356,7 @@
           "label": "Custom image"
         },
         "custom-image-colorize": {
-          "description": "Tint the custom image with the widget Color setting",
+          "description": "Tint the custom image with the widget Icon Color setting",
           "label": "Colorize custom image"
         },
         "custom-labels": {
@@ -2480,6 +2476,10 @@
         "hot-reload": {
           "description": "Reload the scripted widget when its source changes",
           "label": "Hot Reload"
+        },
+        "icon-color": {
+          "description": "Overrides the widget color for icons only; fixed hex colors are also supported",
+          "label": "Icon Color"
         },
         "icon-size": {
           "description": "Icon size in pixels",

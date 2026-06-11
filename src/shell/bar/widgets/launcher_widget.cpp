@@ -45,7 +45,7 @@ void LauncherWidget::refreshCustomImageTint() {
     return;
   }
   if (m_customImageColorize) {
-    m_image->setForegroundTint(widgetForegroundOr(colorSpecFromRole(ColorRole::OnSurface)));
+    m_image->setForegroundTint(widgetIconColorOr(colorSpecFromRole(ColorRole::OnSurface)));
   } else {
     m_image->setForegroundTint(std::nullopt);
   }

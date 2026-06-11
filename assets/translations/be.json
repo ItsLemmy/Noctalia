@@ -298,5 +298,26 @@
       "refreshing": "Абнаўленне надвор'я...",
       "waiting": "Чаканне дадзеных аб надвор'і"
     }
+  },
+  "desktop-widgets": {
+    "editor": {
+      "actions": {
+        "done": "Гатова"
+      },
+      "dialogs": {
+        "select-sticker-image": "Выберыце відарыс для стыкеру"
+      },
+      "settings": {
+        "aspect-ratio": "Суадносіны бакоў",
+        "background": "Фон",
+        "background-color": "Колер",
+        "background-opacity": "Непразрыстасць",
+        "background-padding": "Водступ",
+        "background-radius": "Радыус",
+        "background-section": "Фон",
+        "bands": "Паласа",
+        "bar-width": "Шырыня панэлі"
+      }
+    }
   }
 }

@@ -85,8 +85,8 @@ public:
   // Resolved primary label color: `[widget.*] color` when set, else `capsule_foreground` when capsule styling is
   // enabled, else `fallback` (e.g. colorSpecFromRole(OnSurface)).
   [[nodiscard]] ColorSpec widgetForegroundOr(const ColorSpec& fallback) const noexcept;
-  // Resolved icon color: `[widget.*] icon_color` when set, else `capsule_foreground` when capsule styling is
-  // enabled, else `fallback` (e.g. colorSpecFromRole(OnSurface)).
+  // Resolved icon color: `[widget.*] icon_color` when set, else the foreground chain
+  // (`color` → `capsule_foreground` → `fallback`), so a bare `color` still tints icons.
   [[nodiscard]] ColorSpec widgetIconColorOr(const ColorSpec& fallback) const noexcept;
 
 protected:

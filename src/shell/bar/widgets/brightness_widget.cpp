@@ -50,7 +50,7 @@ void BrightnessWidget::create() {
           .out = &m_glyph,
           .glyph = "brightness-high",
           .glyphSize = Style::baseGlyphSize * m_contentScale,
-          .color = widgetForegroundOr(colorSpecFromRole(ColorRole::OnSurface)),
+          .color = widgetIconColorOr(colorSpecFromRole(ColorRole::OnSurface)),
       })
   );
 
