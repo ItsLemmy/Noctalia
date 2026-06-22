@@ -29,14 +29,11 @@ namespace {
 
 } // namespace
 
-PluginDesktopWidget::PluginDesktopWidget(
-    std::string entryId, std::filesystem::path sourcePath, std::unordered_map<std::string, WidgetSettingValue> settings,
-    std::string outputName, scripting::ScriptApiContext& scriptApi, FileWatcher* fileWatcher, HttpClient* httpClient,
-    ClipboardService* clipboard
-)
-    : m_entryId(std::move(entryId)), m_sourcePath(std::move(sourcePath)), m_pluginDir(m_sourcePath.parent_path()),
-      m_outputName(std::move(outputName)), m_scriptApi(scriptApi), m_settings(std::move(settings)),
-      m_fileWatcher(fileWatcher), m_httpClient(httpClient), m_clipboard(clipboard) {
+PluginDesktopWidget::PluginDesktopWidget(scripting::PluginRuntimeContext context, std::string outputName)
+    : m_entryId(std::move(context.entryId)), m_sourcePath(std::move(context.sourcePath)),
+      m_pluginDir(m_sourcePath.parent_path()), m_outputName(std::move(outputName)), m_scriptApi(context.scriptApi),
+      m_settings(std::move(context.settings)), m_fileWatcher(context.fileWatcher), m_httpClient(context.httpClient),
+      m_clipboard(context.clipboard) {
   scripting::PluginIpcRouter::instance().registerEndpoint(this);
 }
 

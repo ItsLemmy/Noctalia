@@ -24,14 +24,11 @@ namespace {
   }
 } // namespace
 
-PluginShortcut::PluginShortcut(
-    std::string entryId, std::filesystem::path sourcePath, std::unordered_map<std::string, WidgetSettingValue> settings,
-    scripting::ScriptApiContext& scriptApi, HttpClient* httpClient, ClipboardService* clipboard,
-    CompositorPlatform* platform
-)
-    : m_entryId(std::move(entryId)), m_sourcePath(std::move(sourcePath)), m_pluginDir(m_sourcePath.parent_path()),
-      m_scriptApi(scriptApi), m_httpClient(httpClient), m_clipboard(clipboard), m_platform(platform) {
-  start(std::move(settings));
+PluginShortcut::PluginShortcut(scripting::PluginRuntimeContext context)
+    : m_entryId(std::move(context.entryId)), m_sourcePath(std::move(context.sourcePath)),
+      m_pluginDir(m_sourcePath.parent_path()), m_scriptApi(context.scriptApi), m_httpClient(context.httpClient),
+      m_clipboard(context.clipboard), m_platform(context.platform) {
+  start(std::move(context.settings));
 }
 
 PluginShortcut::~PluginShortcut() {

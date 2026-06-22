@@ -396,8 +396,19 @@ std::unique_ptr<Widget> WidgetFactory::create(
         *pluginEntry->manifest, psIt != pluginSettings.end() ? psIt->second : kNoPluginOverrides, seeded
     );
     auto widget = std::make_unique<PluginWidget>(
-        pluginEntry->fullId(), pluginEntry->sourcePath, std::move(seeded), barName, outputName, *m_scriptApi,
-        m_fileWatcher, &m_platform, m_clipboard, m_httpClient, m_audioSpectrum, m_mpris
+        scripting::PluginRuntimeContext{
+            .entryId = pluginEntry->fullId(),
+            .sourcePath = pluginEntry->sourcePath,
+            .settings = std::move(seeded),
+            .scriptApi = *m_scriptApi,
+            .fileWatcher = m_fileWatcher,
+            .httpClient = m_httpClient,
+            .clipboard = m_clipboard,
+            .platform = &m_platform,
+            .audioSpectrum = m_audioSpectrum,
+            .mpris = m_mpris,
+        },
+        barName, outputName
     );
     widget->setContentScale(contentScale);
     return widget;

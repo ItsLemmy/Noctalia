@@ -2015,9 +2015,22 @@ void Application::reloadPluginLauncherProviders() {
 
     m_launcherPanel->addProvider(
         std::make_unique<PluginLauncherProvider>(
-            resolved.fullId(), resolved.manifest->name, resolved.sourcePath, resolved.entry->launcherPrefix,
-            resolved.entry->launcherGlyph, resolved.entry->launcherGlobalSearch, resolved.entry->launcherDebounceMs,
-            std::move(categories), std::move(seeded), m_scriptApi, &m_httpClient, &m_clipboardService
+            scripting::PluginRuntimeContext{
+                .entryId = resolved.fullId(),
+                .sourcePath = resolved.sourcePath,
+                .settings = std::move(seeded),
+                .scriptApi = m_scriptApi,
+                .httpClient = &m_httpClient,
+                .clipboard = &m_clipboardService,
+            },
+            PluginLauncherProviderOptions{
+                .displayName = resolved.manifest->name,
+                .prefix = resolved.entry->launcherPrefix,
+                .glyph = resolved.entry->launcherGlyph,
+                .globalSearch = resolved.entry->launcherGlobalSearch,
+                .debounceMs = resolved.entry->launcherDebounceMs,
+                .categories = std::move(categories),
+            }
         )
     );
   }

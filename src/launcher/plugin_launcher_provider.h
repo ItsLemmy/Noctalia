@@ -3,6 +3,7 @@
 #include "config/config_types.h"
 #include "core/timer_manager.h"
 #include "launcher/launcher_provider.h"
+#include "scripting/plugin_runtime_context.h"
 #include "scripting/script_runtime.h"
 
 #include <filesystem>
@@ -19,6 +20,15 @@ namespace scripting {
   class ScriptApiContext;
 }
 
+struct PluginLauncherProviderOptions {
+  std::string displayName;
+  std::string prefix;
+  std::string glyph;
+  bool globalSearch = false;
+  int debounceMs = 0;
+  std::vector<LauncherCategory> categories;
+};
+
 // A launcher provider backed by a plugin's [[launcher_provider]] entry. The native
 // LauncherProvider interface is synchronous, but the plugin's onQuery(text) runs
 // off-thread, so query() returns the cached result set immediately and kicks an
@@ -27,12 +37,7 @@ namespace scripting {
 // and the result set echoes the query text it answered so the latest one wins.
 class PluginLauncherProvider : public LauncherProvider {
 public:
-  PluginLauncherProvider(
-      std::string entryId, std::string displayName, std::filesystem::path sourcePath, std::string prefix,
-      std::string glyph, bool globalSearch, int debounceMs, std::vector<LauncherCategory> categories,
-      std::unordered_map<std::string, WidgetSettingValue> settings, scripting::ScriptApiContext& scriptApi,
-      HttpClient* httpClient, ClipboardService* clipboard
-  );
+  PluginLauncherProvider(scripting::PluginRuntimeContext context, PluginLauncherProviderOptions options);
   ~PluginLauncherProvider() override;
 
   [[nodiscard]] std::string_view prefix() const override { return m_prefix; }

@@ -2,6 +2,7 @@
 
 #include "config/config_types.h"
 #include "core/timer_manager.h"
+#include "scripting/plugin_runtime_context.h"
 #include "scripting/script_runtime.h"
 #include "shell/control_center/shortcut_registry.h"
 
@@ -25,11 +26,7 @@ namespace scripting {
 // time the control center is opened.
 class PluginShortcut : public Shortcut {
 public:
-  PluginShortcut(
-      std::string entryId, std::filesystem::path sourcePath,
-      std::unordered_map<std::string, WidgetSettingValue> settings, scripting::ScriptApiContext& scriptApi,
-      HttpClient* httpClient, ClipboardService* clipboard, CompositorPlatform* platform = nullptr
-  );
+  explicit PluginShortcut(scripting::PluginRuntimeContext context);
   ~PluginShortcut() override;
 
   [[nodiscard]] std::string_view id() const override { return m_entryId; }

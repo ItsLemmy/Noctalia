@@ -22,15 +22,14 @@ namespace {
 } // namespace
 
 PluginLauncherProvider::PluginLauncherProvider(
-    std::string entryId, std::string displayName, std::filesystem::path sourcePath, std::string prefix,
-    std::string glyph, bool globalSearch, int debounceMs, std::vector<LauncherCategory> categories,
-    std::unordered_map<std::string, WidgetSettingValue> settings, scripting::ScriptApiContext& scriptApi,
-    HttpClient* httpClient, ClipboardService* clipboard
+    scripting::PluginRuntimeContext context, PluginLauncherProviderOptions options
 )
-    : m_entryId(std::move(entryId)), m_displayName(std::move(displayName)), m_sourcePath(std::move(sourcePath)),
-      m_pluginDir(m_sourcePath.parent_path()), m_prefix(std::move(prefix)), m_glyph(std::move(glyph)),
-      m_globalSearch(globalSearch), m_debounceMs(debounceMs), m_categories(std::move(categories)),
-      m_settings(std::move(settings)), m_scriptApi(scriptApi), m_httpClient(httpClient), m_clipboard(clipboard) {}
+    : m_entryId(std::move(context.entryId)), m_displayName(std::move(options.displayName)),
+      m_sourcePath(std::move(context.sourcePath)), m_pluginDir(m_sourcePath.parent_path()),
+      m_prefix(std::move(options.prefix)), m_glyph(std::move(options.glyph)), m_globalSearch(options.globalSearch),
+      m_debounceMs(options.debounceMs), m_categories(std::move(options.categories)),
+      m_settings(std::move(context.settings)), m_scriptApi(context.scriptApi), m_httpClient(context.httpClient),
+      m_clipboard(context.clipboard) {}
 
 PluginLauncherProvider::~PluginLauncherProvider() {
   if (m_alive) {

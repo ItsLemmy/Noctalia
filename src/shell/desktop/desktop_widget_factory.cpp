@@ -367,8 +367,16 @@ std::unique_ptr<DesktopWidget> DesktopWidgetFactory::create(
     }
     scripting::mergePluginSettings(*pluginEntry->manifest, *pluginOverrides, seeded);
     auto widget = std::make_unique<PluginDesktopWidget>(
-        pluginEntry->fullId(), pluginEntry->sourcePath, std::move(seeded), std::string{}, *m_scriptDeps.scriptApi,
-        m_scriptDeps.fileWatcher, m_httpClient, m_scriptDeps.clipboard
+        scripting::PluginRuntimeContext{
+            .entryId = pluginEntry->fullId(),
+            .sourcePath = pluginEntry->sourcePath,
+            .settings = std::move(seeded),
+            .scriptApi = *m_scriptDeps.scriptApi,
+            .fileWatcher = m_scriptDeps.fileWatcher,
+            .httpClient = m_httpClient,
+            .clipboard = m_scriptDeps.clipboard,
+        },
+        std::string{}
     );
     applyCommonSettings(*widget, settings);
     widget->setContentScale(contentScale);
