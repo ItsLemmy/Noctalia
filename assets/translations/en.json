@@ -1242,19 +1242,6 @@
       }
     },
     "plugins": {
-      "plugins": {
-        "configure": "Configure",
-        "deprecated": "deprecated",
-        "empty": "No plugins found. Add a source, or check your network.",
-        "loading": "Loading plugins...",
-        "refreshing": "Refreshing plugins...",
-        "requires": "Requires: {dependencies}",
-        "requires-newer-noctalia": "requires newer Noctalia",
-        "title": "Plugins"
-      },
-      "settings": {
-        "empty": "No settings available."
-      },
       "panels": {
         "open-near-click": {
           "description": "Open the panel near the bar widget that toggled it",
@@ -1268,6 +1255,19 @@
           "description": "Screen position when the panel is floating",
           "label": "Position"
         }
+      },
+      "plugins": {
+        "configure": "Configure",
+        "deprecated": "deprecated",
+        "empty": "No plugins found. Add a source, or check your network.",
+        "loading": "Loading plugins...",
+        "refreshing": "Refreshing plugins...",
+        "requires": "Requires: {dependencies}",
+        "requires-newer-noctalia": "requires newer Noctalia",
+        "title": "Plugins"
+      },
+      "settings": {
+        "empty": "No settings available."
       },
       "sources": {
         "add": "Add source",
@@ -1386,10 +1386,6 @@
       "bar": {
         "auto-hide": {
           "description": "Automatically hide the bar when not in use"
-        },
-        "show-on-workspace-switch": {
-          "description": "Briefly reveal the bar when the active workspace changes",
-          "label": "Show on Workspace Switch"
         },
         "background-opacity": {
           "description": "Background opacity of the bar"
@@ -1520,6 +1516,10 @@
         },
         "shadow": {
           "description": "Cast the global surface shadow from the bar"
+        },
+        "show-on-workspace-switch": {
+          "description": "Briefly reveal the bar when the active workspace changes",
+          "label": "Show on Workspace Switch"
         },
         "start-widgets": {
           "description": "Widgets on the start (left/top) side of the bar",
