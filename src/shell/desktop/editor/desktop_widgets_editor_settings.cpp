@@ -663,10 +663,6 @@ void DesktopWidgetsEditor::applySettingChange(const std::string& key, WidgetSett
     const bool rebuildInspector = settingChangeAffectsInspectorVisibility(state->type, key) || key == "background";
 
     if (view.widget != nullptr && view.widget->applySetting(key, value, state->settings, *m_renderContext)) {
-      if (state->type == "button" && (key == "label" || key == "glyph")) {
-        state->boxWidth = 0.0f;
-        state->boxHeight = 0.0f;
-      }
       applyViewState(view, *state, true);
       updateSelectionVisuals(*surface);
       if (rebuildInspector) {
